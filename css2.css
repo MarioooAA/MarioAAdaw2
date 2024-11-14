@@ -8,22 +8,23 @@ body {
     font-family: Arial, sans-serif;
     color: white;
     background-color: black;
-    display: flex;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
 }
 
 .header {
-    width: 100%;
+    grid-column: 1 / -1;
     background-color: #333;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     color: #e74c3c;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
 }
 
 .header .logo {
@@ -34,19 +35,16 @@ body {
 .header .nav a {
     margin: 0 10px;
     color: white;
+    text-decoration: none;
     font-weight: bold;
 }
 
 .sidebar {
-    width: 200px;
     background-color: #2c2c2c;
-    padding: 20px;
     display: flex;
     flex-direction: column;
+    padding: 20px;
     gap: 20px;
-    position: fixed;
-    top: 50px; 
-    right: 0;
 }
 
 .sidebar a {
@@ -59,8 +57,8 @@ body {
     margin-top: auto;
     color: white;
     text-align: center;
-    font-size: 14px;
 }
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -72,4 +70,41 @@ body {
 
 .logo-main img {
     max-width: 100px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #444;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.search-bar img {
+    margin-right: 10px;
+}
+
+.search-bar input {
+    border: none;
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    flex: 1;
+}
+
+.search-bar button {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+.footer {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    color: #777;
+    background-color: #333;
 }
