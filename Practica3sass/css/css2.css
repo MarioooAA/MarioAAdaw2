@@ -16,14 +16,14 @@ body {
   grid-template-rows: auto 1fr auto;
   height: auto;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1025px) {
   .container {
     grid-template-columns: 200px 1fr;
     grid-template-rows: auto 1fr auto;
     height: 100vh;
   }
 }
-@media (min-width: 1025px) {
+@media (min-width: 1026px) {
   .container {
     grid-template-columns: 300px 1fr;
   }
@@ -38,7 +38,7 @@ body {
   align-items: center;
   padding: 15px;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1025px) {
   .header {
     flex-direction: row;
     justify-content: space-between;
@@ -55,7 +55,7 @@ body {
   justify-content: center;
   gap: 10px;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1025px) {
   .header .nav {
     flex-wrap: nowrap;
   }
@@ -73,7 +73,7 @@ body {
 .sidebar {
   display: none;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1025px) {
   .sidebar {
     display: flex;
     flex-direction: column;
@@ -111,12 +111,12 @@ body {
   max-width: 100%;
   height: auto;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1025px) {
   .main-content .main-logo {
     max-width: 70%;
   }
 }
-@media (min-width: 1025px) {
+@media (min-width: 1026px) {
   .main-content .main-logo {
     max-width: 50%;
   }
@@ -144,7 +144,7 @@ body {
 .main-content .search-bar button:hover {
   background-color: #d62c1a;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1025px) {
   .main-content .search-bar {
     flex-direction: row;
     justify-content: center;
