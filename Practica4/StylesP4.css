@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #5c4b3c;
+    text-align: center;
+    padding: 20px;
+}
+
+header picture img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1 {
+    color: #5c4b3c;
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 20px auto;
+    text-align: center;
+    max-width: 800px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+@keyframes colorPulse {
+    0% {
+        background-color: #5c4b3c;
+    }
+    50% {
+        background-color: #937e6c;
+    }
+    100% {
+        background-color: #5c4b3c;
+    }
+}
+
+header {
+    animation: colorPulse 5s infinite;
+}
