@@ -4,29 +4,48 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    text-align: center;
 }
 
 header {
     background-color: #5c4b3c;
     text-align: center;
     padding: 20px;
+    animation: colorPulse 5s infinite;
 }
 
-header picture img {
-    max-width: 100%;
+@keyframes colorPulse {
+    0% { background-color: #5c4b3c; }
+    50% { background-color: #937e6c; }
+    100% { background-color: #5c4b3c; }
+}
+
+.animated-logo {
+    width: 200px;
     height: auto;
+    animation: spinLogo 4s linear infinite;
 }
 
-h1 {
-    color: #5c4b3c;
-    font-size: 2.5rem;
+@keyframes spinLogo {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-p {
+
+.animated-button {
+    background-color: #5c4b3c;
+    color: white;
+    padding: 15px 30px;
     font-size: 1.2rem;
-    margin: 20px auto;
-    text-align: center;
-    max-width: 800px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.animated-button:hover {
+    background-color: #937e6c;
+    transform: scale(1.1);
 }
 
 footer {
@@ -37,20 +56,4 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-}
-
-@keyframes colorPulse {
-    0% {
-        background-color: #5c4b3c;
-    }
-    50% {
-        background-color: #937e6c;
-    }
-    100% {
-        background-color: #5c4b3c;
-    }
-}
-
-header {
-    animation: colorPulse 5s infinite;
 }
