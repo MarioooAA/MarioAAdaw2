@@ -31,7 +31,6 @@ header {
     100% { transform: rotate(360deg); }
 }
 
-
 .animated-button {
     background-color: #5c4b3c;
     color: white;
@@ -40,12 +39,13 @@ header {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .animated-button:hover {
     background-color: #937e6c;
     transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 footer {
@@ -56,4 +56,14 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+video {
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+video:hover {
+    transform: scale(1.05);
 }

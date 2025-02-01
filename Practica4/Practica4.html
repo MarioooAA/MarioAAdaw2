@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="StylesP4.css">
 </head>
 <body>
-    
-    
+
+    <audio autoplay loop>
+        <source src="audiofondo.mp3" type="audio/mpeg">
+        <source src="audiofondo.ogg" type="audio/ogg">
+        Tu navegador no soporta audio.
+    </audio>
+
     <header>
         <picture>
             <source srcset="logo-small.webp" type="image/webp" media="(max-width: 600px)" sizes="100px">
@@ -22,20 +27,29 @@
         <section>
             <h1>Bienvenido a Adotpet</h1>
             <p>Conectamos a familias con refugios de animales para facilitar la adopción.</p>
-          
         </section>
         
+        <section>
+            <h2>Conoce a nuestros amigos peludos</h2>
+            <video width="560" height="315" controls autoplay loop poster="poster.jpg">
+                <source src="videoperros.mp4" type="video/mp4">
+                <source src="videoperros.ogv" type="video/ogg">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </section>
+
         <section>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/rsTLyukvxGU?autoplay=1&mute=1" 
                 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
                 encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </section>
-        
+
         <button class="animated-button">Adoptar Ahora</button>
     </main>
     
     <footer>
         <p>&copy; 2025 Adotpet</p>
     </footer>
+
 </body>
 </html>
