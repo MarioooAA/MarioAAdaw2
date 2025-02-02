@@ -27,8 +27,18 @@ header {
 }
 
 @keyframes spinLogo {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg) scale(1); opacity: 1; }
+    50% { transform: rotate(180deg) scale(1.2); opacity: 0.8; }
+    100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+.animated-title {
+    animation: fadeInTitle 3s ease-in-out;
+}
+
+@keyframes fadeInTitle {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .animated-button {
@@ -65,5 +75,13 @@ video {
 }
 
 video:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(2deg);
+    filter: brightness(1.2);
+    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+
+@keyframes spinLogo {
+    0% { transform: rotate(0deg) scale(1); opacity: 1; }
+    50% { transform: rotate(180deg) scale(1.2); opacity: 0.8; }
+    100% { transform: rotate(360deg) scale(1); opacity: 1; }
 }
