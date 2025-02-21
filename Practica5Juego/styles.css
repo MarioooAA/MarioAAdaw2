@@ -1,6 +1,43 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-image: url('images/Mesa.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#juego {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#cartas-dealer {
+    margin-bottom: 20px;
+}
+
+#cartas-jugador {
+    margin-top: 20px;
 }
 
 .carta {
@@ -14,8 +51,36 @@ body {
     background: white;
     margin: 5px;
     transition: transform 0.5s;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
 }
 
 .carta.volteada {
-    background: gray;
+    background: none;
+    background-image: url('images/Fondocarta.jpg');
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+    border: 1px solid black;
+}
+
+button {
+    background-color: gold;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: darkgoldenrod;
+}
+
+#mensaje-final {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
 }

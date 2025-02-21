@@ -1,4 +1,3 @@
-// script.js
 class Carta extends HTMLElement {
     constructor() {
         super();
@@ -20,8 +19,8 @@ customElements.define('carta-element', Carta);
 const inicio = document.getElementById("inicio");
 const juego = document.getElementById("juego");
 const mensajeFinal = document.getElementById("mensaje-final");
-const cartasJugador = document.getElementById("cartas-jugador");
-const cartasDealer = document.getElementById("cartas-dealer");
+const dealerCards = document.getElementById("dealer-cards");
+const playerCards = document.getElementById("player-cards");
 const btnJugar = document.getElementById("btn-jugar");
 const btnPedir = document.getElementById("btn-pedir");
 const btnPlantar = document.getElementById("btn-plantar");
@@ -74,30 +73,34 @@ function repartirCarta(destino) {
 }
 
 function renderizarCartas(revelarDealer = false) {
-    cartasJugador.innerHTML = '';
-    cartasDealer.innerHTML = '';
+    dealerCards.innerHTML = '';
+    playerCards.innerHTML = '';
     
     manoDealer.forEach((carta, index) => {
         let elemento = document.createElement('carta-element');
         if (index === 0 && !revelarDealer) {
-            elemento.valor = { valor: '?', palo: '?' };
+            elemento.valor = { valor: ' ', palo: ' ' };
+            elemento.shadowRoot.querySelector('.carta').classList.add('volteada');
         } else {
             elemento.valor = carta;
         }
-        cartasDealer.appendChild(elemento);
+        dealerCards.appendChild(elemento);
     });
     
     manoJugador.forEach(carta => {
         let elemento = document.createElement('carta-element');
         elemento.valor = carta;
-        cartasJugador.appendChild(elemento);
+        playerCards.appendChild(elemento);
     });
 }
 
 async function iniciarJuego() {
+    console.log("Función iniciarJuego ejecutada"); // Mensaje de depuración
     inicio.style.display = 'none';
     juego.style.display = 'block';
     mensajeFinal.textContent = '';
+    btnPedir.disabled = false;
+    btnPlantar.disabled = false;
     crearMazo();
     manoJugador = [];
     manoDealer = [];
@@ -110,7 +113,11 @@ async function iniciarJuego() {
 
 function verificarJuego() {
     let puntosJugador = calcularPuntos(manoJugador);
-    if (puntosJugador > 21) {
+    if (puntosJugador === 21 && manoJugador.length === 2) {
+        mensajeFinal.textContent = "¡Blackjack! ¡Has ganado!";
+        btnPedir.disabled = true;
+        btnPlantar.disabled = true;
+    } else if (puntosJugador > 21) {
         mensajeFinal.textContent = "Te pasaste de 21. ¡Has perdido!";
         btnPedir.disabled = true;
         btnPlantar.disabled = true;
@@ -142,9 +149,14 @@ async function finalizarJuego() {
     }
 }
 
-btnJugar.addEventListener("click", iniciarJuego);
+btnJugar.addEventListener("click", () => {
+    console.log("Botón Jugar clickeado"); // Mensaje de depuración
+    iniciarJuego();
+});
+
 btnPedir.addEventListener("click", async () => {
     await repartirCarta(manoJugador);
     verificarJuego();
 });
+
 btnPlantar.addEventListener("click", finalizarJuego);
