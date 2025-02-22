@@ -79,6 +79,15 @@ button:hover {
     background-color: darkgoldenrod;
 }
 
+#btn-reiniciar {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+#btn-reiniciar:hover {
+    background-color: #45a049; /* Verde oscuro al pasar el ratón */
+}
+
 #mensaje-final {
     margin-top: 20px;
     font-size: 24px;

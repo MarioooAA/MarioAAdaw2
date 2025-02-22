@@ -24,6 +24,7 @@ const playerCards = document.getElementById("player-cards");
 const btnJugar = document.getElementById("btn-jugar");
 const btnPedir = document.getElementById("btn-pedir");
 const btnPlantar = document.getElementById("btn-plantar");
+const btnReiniciar = document.getElementById("btn-reiniciar");
 
 let mazo = [];
 let manoJugador = [];
@@ -79,7 +80,7 @@ function renderizarCartas(revelarDealer = false) {
     manoDealer.forEach((carta, index) => {
         let elemento = document.createElement('carta-element');
         if (index === 0 && !revelarDealer) {
-            elemento.valor = { valor: ' ', palo: ' ' };
+            elemento.valor = { valor: '', palo: '' };
             elemento.shadowRoot.querySelector('.carta').classList.add('volteada');
         } else {
             elemento.valor = carta;
@@ -95,12 +96,12 @@ function renderizarCartas(revelarDealer = false) {
 }
 
 async function iniciarJuego() {
-    console.log("Función iniciarJuego ejecutada"); // Mensaje de depuración
     inicio.style.display = 'none';
     juego.style.display = 'block';
     mensajeFinal.textContent = '';
     btnPedir.disabled = false;
     btnPlantar.disabled = false;
+    btnReiniciar.style.display = 'none'; // Ocultar botón de reiniciar
     crearMazo();
     manoJugador = [];
     manoDealer = [];
@@ -117,10 +118,12 @@ function verificarJuego() {
         mensajeFinal.textContent = "¡Blackjack! ¡Has ganado!";
         btnPedir.disabled = true;
         btnPlantar.disabled = true;
+        mostrarBotonReiniciar();
     } else if (puntosJugador > 21) {
         mensajeFinal.textContent = "Te pasaste de 21. ¡Has perdido!";
         btnPedir.disabled = true;
         btnPlantar.disabled = true;
+        mostrarBotonReiniciar();
     }
 }
 
@@ -147,16 +150,21 @@ async function finalizarJuego() {
     } else {
         mensajeFinal.textContent = "Empate.";
     }
+    mostrarBotonReiniciar();
 }
 
-btnJugar.addEventListener("click", () => {
-    console.log("Botón Jugar clickeado"); // Mensaje de depuración
-    iniciarJuego();
-});
+function mostrarBotonReiniciar() {
+    btnReiniciar.style.display = "block";
+}
 
+btnJugar.addEventListener("click", iniciarJuego);
 btnPedir.addEventListener("click", async () => {
     await repartirCarta(manoJugador);
     verificarJuego();
 });
-
 btnPlantar.addEventListener("click", finalizarJuego);
+
+btnReiniciar.addEventListener("click", () => {
+    btnReiniciar.style.display = "none";
+    iniciarJuego();
+});
