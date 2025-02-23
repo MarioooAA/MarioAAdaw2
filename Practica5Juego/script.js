@@ -3,15 +3,43 @@ class Carta extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="styles.css">
+            <style>
+                .carta {
+                    width: 60px;
+                    height: 90px;
+                    border: 1px solid black;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                    background: white;
+                    margin: 5px;
+                    transition: transform 0.5s, box-shadow 0.3s;
+                    border-radius: 5px;
+                    background-size: cover;
+                    background-position: center;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+                .carta.volteada {
+                    background-image: url('images/Fondocarta.jpg');
+                    background-size: cover;
+                    background-position: center;
+                    border: 1px solid black;
+                }
+            </style>
             <div class="carta"></div>
         `;
     }
 
     set valor(carta) {
         const cartaDiv = this.shadowRoot.querySelector('.carta');
-        cartaDiv.textContent = `${carta.valor} ${carta.palo}`;
-        cartaDiv.style.color = (carta.palo === '♥' || carta.palo === '♦') ? 'red' : 'black';
+        if (carta.valor === '?' && carta.palo === '?') {
+            cartaDiv.classList.add('volteada');
+        } else {
+            cartaDiv.classList.remove('volteada');
+            cartaDiv.textContent = `${carta.valor} ${carta.palo}`;
+            cartaDiv.style.color = (carta.palo === '♥' || carta.palo === '♦') ? 'red' : 'black';
+        }
     }
 }
 customElements.define('carta-element', Carta);
@@ -25,10 +53,21 @@ const btnJugar = document.getElementById("btn-jugar");
 const btnPedir = document.getElementById("btn-pedir");
 const btnPlantar = document.getElementById("btn-plantar");
 const btnReiniciar = document.getElementById("btn-reiniciar");
+const btnInstrucciones = document.getElementById("btn-instrucciones");
+const instrucciones = document.getElementById("instrucciones");
+const btnCerrarInstrucciones = document.getElementById("btn-cerrar-instrucciones");
 
 let mazo = [];
 let manoJugador = [];
 let manoDealer = [];
+
+btnInstrucciones.addEventListener("click", () => {
+    instrucciones.style.display = "block";
+});
+
+btnCerrarInstrucciones.addEventListener("click", () => {
+    instrucciones.style.display = "none";
+});
 
 function crearMazo() {
     const palos = ['♠', '♥', '♦', '♣'];
@@ -69,7 +108,7 @@ function repartirCarta(destino) {
             destino.push(carta);
             renderizarCartas();
             resolve();
-        }, 500);
+        }, 500); 
     });
 }
 
@@ -80,8 +119,7 @@ function renderizarCartas(revelarDealer = false) {
     manoDealer.forEach((carta, index) => {
         let elemento = document.createElement('carta-element');
         if (index === 0 && !revelarDealer) {
-            elemento.valor = { valor: '', palo: '' };
-            elemento.shadowRoot.querySelector('.carta').classList.add('volteada');
+            elemento.valor = { valor: '?', palo: '?' }; 
         } else {
             elemento.valor = carta;
         }
@@ -101,7 +139,7 @@ async function iniciarJuego() {
     mensajeFinal.textContent = '';
     btnPedir.disabled = false;
     btnPlantar.disabled = false;
-    btnReiniciar.style.display = 'none'; // Ocultar botón de reiniciar
+    btnReiniciar.style.display = 'none'; 
     crearMazo();
     manoJugador = [];
     manoDealer = [];
@@ -140,7 +178,7 @@ async function finalizarJuego() {
     btnPedir.disabled = true;
     btnPlantar.disabled = true;
     await turnoCrupier();
-    renderizarCartas(true);
+    renderizarCartas(true); 
     let puntosJugador = calcularPuntos(manoJugador);
     let puntosDealer = calcularPuntos(manoDealer);
     if (puntosDealer > 21 || puntosJugador > puntosDealer) {

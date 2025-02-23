@@ -7,32 +7,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button id="btn-instrucciones">Instrucciones</button>
+
     <div id="inicio">
-        <h1>Bienvenido al Blackjack</h1>
+        <div class="recuadro">
+            <h1>Bienvenido al Blackjack</h1>
+        </div>
         <button id="btn-jugar">Jugar</button>
     </div>
+
     <div id="juego" style="display: none;">
-        <!-- Cartas del crupier (parte superior) -->
         <div id="cartas-dealer">
-            <h2>Crupier</h2>
+            <div class="recuadro">
+                <h2>Crupier</h2>
+            </div>
             <div id="dealer-cards"></div>
         </div>
 
-        <!-- Cartas del jugador (parte inferior) -->
         <div id="cartas-jugador">
-            <h2>Jugador</h2>
+            <div class="recuadro">
+                <h2>Jugador</h2>
+            </div>
             <div id="player-cards"></div>
         </div>
 
-        <!-- Botones y mensaje final -->
         <div id="controles">
             <button id="btn-pedir">Pedir Carta</button>
             <button id="btn-plantar">Plantarse</button>
             <p id="mensaje-final"></p>
-            <!-- Botón para reiniciar el juego -->
             <button id="btn-reiniciar" style="display: none;">Jugar de nuevo</button>
         </div>
     </div>
+    <div id="instrucciones" style="display: none;">
+        <h2>Instrucciones</h2>
+        <p>El objetivo es sumar 21 puntos o acercarse lo más posible sin pasarse, ganas si superas al crupier.
+            El valor de las cartas es el siguiente:
+            El As tiene un valor de 11 o 1.
+            Las cartas K,Q,J, tienen un valor de 10.
+            El resto de cartas respetan su valor númerico.
+        </p>
+        <button id="btn-cerrar-instrucciones">Cerrar</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
